@@ -1,0 +1,8 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+rootProject.name = 'zhuanglang-course-web'
+include 'zhuanglang'
+include 'web'
