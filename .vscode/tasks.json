@@ -1,0 +1,30 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "web/",
+			"problemMatcher": [],
+			"label": "front end",
+			"detail": "npm run dev",
+			"group": "build"
+		},
+		{
+			"label": "npmbuild",
+			"type": "shell",
+			"command": "gradle npmBuild"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "gradle bootRun",
+			"dependsOn": "npmbuild",
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
