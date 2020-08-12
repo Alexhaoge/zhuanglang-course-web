@@ -4,6 +4,7 @@
     <!-- <div style="background-color:rgba(113,10,83);padding:0.5rem;">
     <el-divider class="head-divider"></el-divider>
     </div> -->
+    <nav-menu class="nav-menu"></nav-menu>
     <router-view/>
     <div style="height: 20rem"></div>
     <el-footer>
@@ -18,39 +19,28 @@
 </template>
 
 <script>
+import NavMenu from '@/components/common/NavMenu'
 export default {
-  name: 'App'
+  name: 'App',
+  components: {NavMenu}
 }
 </script>
 
 <style>
 #app {
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: 'Avenir',Helvetica,'iragino Sans GB','Microsoft YaHei',Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  /* color: #585858; */
+  background-color:rgba(113,10,83);
 }
 
 body {
-  margin: unset;
-}
-.el-header {
-  display: flex;
-  align-content: flex-start;
-  align-items: center;
-  text-align: center;
-  background-color:rgba(113,10,83);
-  padding-top: 0.5rem;
-}
-.head-title{
-  font-size: 1.2rem;
-  font-family: 'STKaiti','Microsoft YaHei',sans-serif;
-  color: antiquewhite;
+  margin: 0rem;
 }
 .head-divider {
   background-color: darkcyan;
-  width: 90%;
+  width: 100%;
   margin: 3rem;
   margin-top: 0rem;
   margin-bottom: 0rem;
