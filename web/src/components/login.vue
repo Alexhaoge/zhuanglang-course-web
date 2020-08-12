@@ -69,7 +69,7 @@ export default {
           }
         })
         .catch(failResponse => {
-          alert('Unknown error!')
+          alert('未知错误，请联系管理员')
         })
     }
 
@@ -85,6 +85,6 @@ export default {
 h1.login-title {
   font-family: "STKaiti", "Microsoft YaHei","微软雅黑",Arial,sans-serif;
   color: white;
-  size: 3rem;
+  font-size: 1.5rem;
 }
 </style>

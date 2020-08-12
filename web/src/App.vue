@@ -1,18 +1,13 @@
 <template>
   <div id="app">
     <el-container>
-    <!-- <div style="background-color:rgba(113,10,83);padding:0.5rem;">
-    <el-divider class="head-divider"></el-divider>
-    </div> -->
+    <el-header>
     <nav-menu class="nav-menu"></nav-menu>
+    </el-header>
     <router-view/>
-    <div style="height: 20rem"></div>
+    <div style="height: 3rem"></div>
     <el-footer>
-      <el-menu mode="horizontal">
-        <el-menu-item >服务学习：庄浪教学资源平台</el-menu-item>
-        <el-menu-item><a href="https://github.com/Alexhaoge/" target="_blank">开发者：Alexhaoge</a></el-menu-item>
-        <el-menu-item><a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank">本网站遵循CC BY-NC-SA 3.0 CN协议</a></el-menu-item>
-      </el-menu>
+      <Footer class="footer"></Footer>
     </el-footer>
     </el-container>
   </div>
@@ -20,9 +15,10 @@
 
 <script>
 import NavMenu from '@/components/common/NavMenu'
+import Footer from '@/components/common/Footer'
 export default {
   name: 'App',
-  components: {NavMenu}
+  components: {NavMenu, Footer}
 }
 </script>
 
@@ -38,26 +34,22 @@ export default {
 body {
   margin: 0rem;
 }
-.head-divider {
-  background-color: darkcyan;
-  width: 100%;
-  margin: 3rem;
-  margin-top: 0rem;
-  margin-bottom: 0rem;
+.el-header {
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+  text-align: center;
+  background-color:rgba(113,10,83);
+  margin: 1rem;
 }
 .el-main {
   background-color: rgba(113,10,83);
 }
 .el-footer {
-  background-color: rgb(233, 236, 239);
+  /* background-color: rgb(233, 236, 239); */
+  background-color: transparent;
   display: flex;
   justify-content: center;
   padding: unset;
-}
-.el-footer .el-menu {
-  background-color: transparent;
-}
-.el-footer .el-menu .el-menu-item a{
-  text-decoration: none;
 }
 </style>

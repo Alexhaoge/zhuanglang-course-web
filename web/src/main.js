@@ -5,7 +5,6 @@ import App from './App'
 import router from './router'
 import store from './store'
 import ElementUI from 'element-ui'
-// import sha1 from 'js-sha1'
 import 'element-ui/lib/theme-chalk/index.css'
 
 // 设置反向代理，前端请求默认发送到 http://localhost:8443/api

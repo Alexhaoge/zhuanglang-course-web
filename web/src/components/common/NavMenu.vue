@@ -1,22 +1,20 @@
 <template>
-  <el-header>
-    <el-menu
-      :default-active="currentPath"
-      router
-      mode="horizontal"
-      background-color="transparent"
-      text-color="white"
-      active-text-color="red"
-      style="min-width: 100%;">
-      <el-menu-item class="title">服务学习 - 庄浪教学资源平台</el-menu-item>
-      <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
-        {{ item.navItem }}
-      </el-menu-item>
-      <div id="logo-container" style="float:right; max-height:60%;pointer-events: none;">
-        <img src="../../assets/nankai2.png" alt="site_logo">
-      </div>
-    </el-menu>
-  </el-header>
+  <el-menu
+    :default-active="currentPath"
+    router
+    mode="horizontal"
+    background-color="transparent"
+    text-color="white"
+    active-text-color="red"
+    style="min-width: 100%;">
+    <el-menu-item class="title" index="/wtf">服务学习 - 庄浪教学资源平台</el-menu-item>
+    <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
+      {{ item.navItem }}
+    </el-menu-item>
+    <div id="logo-container" style="float:right; max-height:60%;pointer-events: none;">
+      <img src="../../assets/nankai2.png" alt="site_logo">
+    </div>
+  </el-menu>
 </template>
 
 <script>
@@ -26,9 +24,9 @@ export default {
     return {
       navList: [
         {name: '/index', navItem: '首页'},
-        {name: '/jotter', navItem: '笔记本'},
-        {name: '/library', navItem: '图书馆'},
-        {name: '/admin', navItem: '个人中心'}
+        {name: '/download', navItem: '下载'},
+        {name: '/library', navItem: '目录'},
+        {name: '/admin', navItem: '管理'}
       ]
     }
   },
@@ -57,14 +55,5 @@ a{
   pointer-events: none;
   color: antiquewhite;
   font-family: 'STKaiti','Microsoft YaHei',sans-serif;
-}
-
-.el-header {
-  display: flex;
-  align-content: flex-start;
-  align-items: center;
-  text-align: center;
-  background-color:rgba(113,10,83);
-  margin: 1rem;
 }
 </style>
