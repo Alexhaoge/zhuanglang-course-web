@@ -28,7 +28,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  background-color:rgba(113,10,83);
+  background-color: rgb(113,10,83);
 }
 
 body {
@@ -39,11 +39,11 @@ body {
   align-content: flex-start;
   align-items: center;
   text-align: center;
-  background-color:rgba(113,10,83);
+  background-color: rgb(113,10,83);
   margin: 1rem;
 }
 .el-main {
-  background-color: rgba(113,10,83);
+  background-color: rgb(113,10,83);
 }
 .el-footer {
   /* background-color: rgb(233, 236, 239); */

@@ -5,7 +5,7 @@
     mode="horizontal"
     background-color="transparent"
     text-color="white"
-    active-text-color="red"
+    active-text-color="aqua"
     style="min-width: 100%;">
     <el-menu-item class="title" index="/wtf">服务学习 - 庄浪教学资源平台</el-menu-item>
     <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">

@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color:rgba(113,10,83);padding:0.5rem;">
+    <div class="outer">
         <el-divider class="head-divider"></el-divider>
     </div>
 </template>
@@ -11,11 +11,14 @@ export default {
 </script>
 
 <style>
+div.outer {
+  background-color: rgb(113,10,83);
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
 .head-divider {
   background-color: darkcyan;
   width: 100%;
-  margin: 3rem;
-  margin-top: 0rem;
-  margin-bottom: 0rem;
+  margin: unset;
 }
 </style>

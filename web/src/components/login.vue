@@ -1,5 +1,5 @@
 <template>
-  <el-container direction="vertical">
+  <el-container direction="vertical" style="padding: 2rem;">
   <el-row>
         <img src="../assets/nankai.png" alt="nankai_logo" >
         <h1 class="login-title">庄浪中学教学资源平台</h1>
