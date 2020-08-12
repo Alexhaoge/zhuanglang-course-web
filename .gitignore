@@ -38,4 +38,4 @@ yarn-error.log*
 .sts4-cache
 
 ### VS Code ###
-.vscode/
+!/.vscode/tasks.json
