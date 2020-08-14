@@ -3,14 +3,22 @@
     :default-active="currentPath"
     router
     mode="horizontal"
-    background-color="transparent"
+    background-color="rgba(113,10,83,0.3)"
     text-color="white"
     active-text-color="aqua"
     style="min-width: 100%;">
     <el-menu-item class="title" index="/wtf">服务学习 - 庄浪教学资源平台</el-menu-item>
-    <el-menu-item v-for="(item,i) in navList" :key="i" :index="item.name">
-      {{ item.navItem }}
-    </el-menu-item>
+    <template v-for="(item,i) in navList">
+      <el-submenu v-if="item.navItem=='目录'" :key="i">
+        <template slot="title">{{item.navItem}}</template>
+        <el-menu-item v-for="(book,i) in bookList" :key="i" :index="book.name">
+          {{book.navItem}}
+        </el-menu-item>
+      </el-submenu>
+      <el-menu-item v-else :key="i" :index="item.name">
+        {{item.navItem}}
+      </el-menu-item>
+    </template>
     <div id="logo-container" style="float:right; max-height:60%;pointer-events: none;">
       <img src="../../assets/nankai2.png" alt="site_logo">
     </div>
@@ -27,6 +35,12 @@ export default {
         {name: '/download', navItem: '下载'},
         {name: '/library', navItem: '目录'},
         {name: '/admin', navItem: '管理'}
+      ],
+      bookList: [
+        {name: '/library/it', navItem: '信息技术'},
+        {name: '/library/music', navItem: '音乐'},
+        {name: '/library/art', navItem: '美术'},
+        {name: '/library/pe', navItem: '体育'}
       ]
     }
   },

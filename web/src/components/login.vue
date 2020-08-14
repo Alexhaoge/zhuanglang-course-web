@@ -7,8 +7,7 @@
   <el-row type="flex" justify="center">
   <el-col :xs="22" :sm="16" :md="8">
   <el-card >
-    <el-form class="login-container"
-          :model="loginForm" :rules="rules" ref="loginForm">
+    <el-form class="login-container" :model="loginForm" :rules="rules" ref="loginForm">
       <h3 class="login_title">系统登录</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username" style="width: 70%;"
@@ -20,7 +19,7 @@
       </el-form-item>
       <el-form-item >
         <el-button type="primary" style="width: 20%;background: rgb(113,10,83);border: none"
-                  v-on:click="login">登录</el-button>
+          v-on:click="login">登录</el-button>
       </el-form-item>
     </el-form>
   </el-card>
@@ -30,6 +29,7 @@
 </template>
 
 <script>
+// import store from '../store'
 let sha1 = require('js-sha1')
 export default {
   name: 'Login',
@@ -43,7 +43,8 @@ export default {
         username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
         password: [{ required: true, message: '请输入密码', trigger: 'blur' }]
       },
-      responseResult: []
+      responseResult: [],
+      whoami: this.$store.state.teacher.username
     }
   },
   methods: {
@@ -72,7 +73,6 @@ export default {
           alert('未知错误，请联系管理员')
         })
     }
-
   }
 }
 </script>

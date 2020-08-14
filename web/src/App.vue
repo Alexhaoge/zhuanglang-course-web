@@ -35,10 +35,6 @@ body {
   margin: 0rem;
 }
 .el-header {
-  display: flex;
-  align-content: flex-start;
-  align-items: center;
-  text-align: center;
   background-color: rgb(113,10,83);
   margin: 1rem;
 }

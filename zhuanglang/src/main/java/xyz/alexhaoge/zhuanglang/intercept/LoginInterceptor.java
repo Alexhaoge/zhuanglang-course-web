@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import xyz.alexhaoge.zhuanglang.Teacher;
+import xyz.alexhaoge.zhuanglang.pojo.Teacher;
 
 public class LoginInterceptor implements HandlerInterceptor {
     

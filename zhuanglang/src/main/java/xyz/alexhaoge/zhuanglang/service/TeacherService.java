@@ -3,7 +3,7 @@ package xyz.alexhaoge.zhuanglang.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import xyz.alexhaoge.zhuanglang.Teacher;
+import xyz.alexhaoge.zhuanglang.pojo.Teacher;
 import xyz.alexhaoge.zhuanglang.dao.TeacherDAO;
 
 @Service

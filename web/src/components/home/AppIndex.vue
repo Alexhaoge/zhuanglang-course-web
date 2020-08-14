@@ -4,21 +4,24 @@
     :interval="4000"
     :height="bannerHeight+'px'"> -->
 <el-container direction="vertical">
-  <el-row>
-  <el-carousel
-    indicator-position="outside"
-    :interval="4000">
-    <el-carousel-item v-for="item in ListCarousel" :key="item.id">
-      <!-- <el-row>
-        <el-col :span="24" class="banner_img">
-          <img ref="bannerHeight" :src="item.src"
-            class="bannerImg" alt="site_banner"
-            @load="imgLoad"/>
-        </el-col>
-      </el-row> -->
-      <img :src="item.src" alt="site_banner" style="height:100%;width:100%;border-radius: 1rem;"/>
-    </el-carousel-item>
-  </el-carousel>
+  <div style="height:3rem"></div>
+  <el-row type="flex" class="row-bg" justify="space-around">
+    <el-col :xs="20" :sm="16" :md="16">
+    <el-carousel
+      indicator-position="outside"
+      :interval="4000">
+      <el-carousel-item v-for="item in ListCarousel" :key="item.id">
+        <!-- <el-row>
+          <el-col :span="24" class="banner_img">
+            <img ref="bannerHeight" :src="item.src"
+              class="bannerImg" alt="site_banner"
+              @load="imgLoad"/>
+          </el-col>
+        </el-row> -->
+        <img :src="item.src" alt="site_banner" style="height:100%;width:100%;border-radius: 1rem;"/>
+      </el-carousel-item>
+    </el-carousel>
+    </el-col>
   </el-row>
   <divider></divider>
   <Login></Login>
@@ -58,10 +61,10 @@ export default {
       ],
       bannerHeight: '',
       Courses: [
-        {Name: '信息技术', img: require('@/assets/it.png'), url: '/library'},
-        {Name: '音乐', img: require('@/assets/music.png'), url: '/library'},
-        {Name: '美术', img: require('@/assets/art.png'), url: '/library'},
-        {Name: '体育', img: require('@/assets/pe.png'), url: '/library'}
+        {Name: '信息技术', img: require('@/assets/it.png'), url: '/library/it'},
+        {Name: '音乐', img: require('@/assets/music.png'), url: '/library/music'},
+        {Name: '美术', img: require('@/assets/art.png'), url: '/library/art'},
+        {Name: '体育', img: require('@/assets/pe.png'), url: '/library/pe'}
       ]
     }
   },
@@ -88,8 +91,7 @@ export default {
 
 <style>
 .el-carousel {
-  margin-left: 10rem;
-  margin-right: 10rem;
+  width: 100%;
 }
 .el-carousel__item h3 {
   color: #475669;
