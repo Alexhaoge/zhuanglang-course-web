@@ -15,12 +15,12 @@ public class LessonController {
     @Autowired
     LessonService lService;
 
-    @GetMapping("/api/library/section{section}/lesson")
+    @GetMapping("/api/library/section/{section}/lesson")
     public List<Lesson> listByBelong(@PathVariable("section") int section) {
         return lService.listByBelong(section);
     }
 
-    @GetMapping("/api/library/lesson{lessonID}")
+    @GetMapping("/api/library/lesson/{lessonID}")
     public Lesson listByID(@PathVariable("lessonID") int lessonID) {
         return lService.get(lessonID);
     }

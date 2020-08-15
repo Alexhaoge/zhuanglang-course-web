@@ -9,7 +9,7 @@
     style="min-width: 100%;">
     <el-menu-item class="title" index="/wtf">服务学习 - 庄浪教学资源平台</el-menu-item>
     <template v-for="(item,i) in navList">
-      <el-submenu v-if="item.navItem=='目录'" :key="i">
+      <el-submenu v-if="item.navItem=='目录'" :key="i" :index="item.name">
         <template slot="title">{{item.navItem}}</template>
         <el-menu-item v-for="(book,i) in bookList" :key="i" :index="book.name">
           {{book.navItem}}

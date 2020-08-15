@@ -21,7 +21,7 @@ public class BookController {
         return bookService.list();
     }
 
-    @GetMapping("/api/library/book{id}")
+    @GetMapping("/api/library/book/{id}")
     public Book listByID(@PathVariable("id") int bookId) {
         return bookService.get(bookId);
     }

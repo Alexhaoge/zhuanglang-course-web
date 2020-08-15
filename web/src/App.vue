@@ -30,7 +30,7 @@ export default {
   text-align: center;
   background-color: rgb(113,10,83);
 }
-
+/* html,body,#app {height: 100%;} */
 body {
   margin: 0rem;
 }
@@ -42,10 +42,12 @@ body {
   background-color: rgb(113,10,83);
 }
 .el-footer {
-  /* background-color: rgb(233, 236, 239); */
   background-color: transparent;
   display: flex;
   justify-content: center;
   padding: unset;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
 </style>

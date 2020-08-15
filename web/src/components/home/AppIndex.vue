@@ -1,8 +1,4 @@
 <template>
-  <!-- <el-carousel
-    indicator-position="outside"
-    :interval="4000"
-    :height="bannerHeight+'px'"> -->
 <el-container direction="vertical">
   <div style="height:3rem"></div>
   <el-row type="flex" class="row-bg" justify="space-around">
@@ -11,13 +7,6 @@
       indicator-position="outside"
       :interval="4000">
       <el-carousel-item v-for="item in ListCarousel" :key="item.id">
-        <!-- <el-row>
-          <el-col :span="24" class="banner_img">
-            <img ref="bannerHeight" :src="item.src"
-              class="bannerImg" alt="site_banner"
-              @load="imgLoad"/>
-          </el-col>
-        </el-row> -->
         <img :src="item.src" alt="site_banner" style="height:100%;width:100%;border-radius: 1rem;"/>
       </el-carousel-item>
     </el-carousel>

@@ -15,12 +15,12 @@ public class SectionController {
     @Autowired
     SectionService sService;
     
-    @GetMapping("/api/library/book{book}/section")
+    @GetMapping("/api/library/book/{book}/section")
     public List<Section> listByBelong(@PathVariable("book") int bookID) {
         return sService.listByBelong(bookID);
     }
 
-    @GetMapping("/api/library/section{sectionID}")
+    @GetMapping("/api/library/section/{sectionID}")
     public Section listByID(@PathVariable("sectionID") int sectionID) {
         return sService.get(sectionID);
     }

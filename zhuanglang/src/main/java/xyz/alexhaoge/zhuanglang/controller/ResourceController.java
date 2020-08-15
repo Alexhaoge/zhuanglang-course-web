@@ -15,12 +15,12 @@ public class ResourceController {
     @Autowired
     ResourceService rService;
 
-    @GetMapping("/api/library/lesson{lesson}/resource")
+    @GetMapping("/api/library/lesson/{lesson}/resource")
     public List<Resource> listByBelong(@PathVariable("lesson") int lesson) {
         return rService.listByBelong(lesson);
     }
 
-    @GetMapping("/api/library/resource{resource}")
+    @GetMapping("/api/library/resource/{resource}")
     public Resource listByID(@PathVariable("resource") int resouce) {
         return rService.get(resouce);
     }
