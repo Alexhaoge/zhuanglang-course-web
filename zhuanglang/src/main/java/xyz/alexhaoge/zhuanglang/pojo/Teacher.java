@@ -1,8 +1,7 @@
 package xyz.alexhaoge.zhuanglang.pojo;
 
 import java.io.Serializable;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -46,17 +46,25 @@ public class Teacher implements Serializable{
     @Column(name = "mail", nullable = false, columnDefinition = "varchar(30) not null")
     private String mail;
 
-    @OneToMany(targetEntity = Book.class, mappedBy = "username")
-    private Set<Book> bookCollection = new HashSet<>();
+    @OneToMany(targetEntity = Book.class, mappedBy = "upload")
+    @MapKey(name = "id")
+    @JsonIgnoreProperties({"upload","sections"})
+    private List<Book> books;
 
-    @OneToMany(targetEntity = Section.class, mappedBy = "username")
-    private Set<Section> sectionCollection = new HashSet<>();
+    @OneToMany(targetEntity = Section.class, mappedBy = "upload")
+    @MapKey(name = "id")
+    @JsonIgnoreProperties({"upload","lessons"})
+    private List<Section> sections;
 
-    @OneToMany(targetEntity = Lesson.class, mappedBy = "username")
-    private Set<Lesson> classCollection = new HashSet<>();
+    @OneToMany(targetEntity = Lesson.class, mappedBy = "upload")
+    @MapKey(name = "id")
+    @JsonIgnoreProperties({"upload","resources"})
+    private List<Lesson> lessons;
 
-    @OneToMany(targetEntity = Resource.class, mappedBy = "username")
-    private Set<Resource> resourceCollection = new HashSet<>();
+    @OneToMany(targetEntity = Resource.class, mappedBy = "upload")
+    @MapKey(name = "id")
+    @JsonIgnoreProperties({"upload"})
+    private List<Resource> resources;
 
     public String getUsername() {
         return username;

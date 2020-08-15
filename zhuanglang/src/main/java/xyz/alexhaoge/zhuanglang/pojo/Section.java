@@ -1,10 +1,10 @@
 package xyz.alexhaoge.zhuanglang.pojo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "section")
@@ -32,14 +35,18 @@ public class Section {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
     private Teacher upload;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "belong", referencedColumnName = "id")
-    @ManyToOne
+    @JsonIgnoreProperties({"sections","upload"})
     private Book belong;
 
-    @OneToMany(targetEntity = Lesson.class, mappedBy = "id")
-    private Set<Lesson> lessonCollection = new HashSet<>();
+    @OneToMany(mappedBy = "belong")
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JsonIgnoreProperties({"belong","upload"})
+    private List<Lesson> lessons;
 
     public int getId(){
         return id;
@@ -74,5 +81,12 @@ public class Section {
     }
     public void setUpload(Teacher upload){
         this.upload = upload;
+    }
+
+    public List<Lesson> getLessons(){
+        return lessons;
+    }
+    public void setLessons(List<Lesson> lessons){
+        this.lessons = lessons;
     }
 }

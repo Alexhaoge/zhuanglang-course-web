@@ -1,14 +1,22 @@
 package xyz.alexhaoge.zhuanglang.pojo;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name = "resources")
+@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +41,12 @@ public class Resource {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
     private Teacher upload;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "belong", referencedColumnName = "id")
-    @ManyToOne
+    @JsonIgnoreProperties({"resources","upload"})
     private Lesson belong;
 
     public int getId(){

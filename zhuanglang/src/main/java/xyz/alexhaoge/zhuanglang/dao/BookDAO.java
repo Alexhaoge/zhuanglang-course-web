@@ -8,5 +8,5 @@ import xyz.alexhaoge.zhuanglang.pojo.Book;
 import xyz.alexhaoge.zhuanglang.pojo.Discipline;
 
 public interface BookDAO extends JpaRepository<Book, Integer>{
-    List<Book> findByDiscipline(Discipline discipline);
+    List<Book> findAllByDiscipline(Discipline discipline);
 }

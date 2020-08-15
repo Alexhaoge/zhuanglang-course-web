@@ -11,6 +11,10 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      path: '/',
+      redirect: '/index'
+    },
+    {
       path: '/index',
       name: 'AppIndex',
       component: AppIndex,

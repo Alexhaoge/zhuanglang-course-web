@@ -8,5 +8,5 @@ import xyz.alexhaoge.zhuanglang.pojo.Lesson;
 import xyz.alexhaoge.zhuanglang.pojo.Resource;
 
 public interface ResourceDAO extends JpaRepository<Resource, Integer> {
-    List<Resource> findByLesson(Lesson lesson);
+    List<Resource> findAllByBelong(Lesson belong);
 }

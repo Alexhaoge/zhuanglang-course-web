@@ -8,5 +8,5 @@ import xyz.alexhaoge.zhuanglang.pojo.Book;
 import xyz.alexhaoge.zhuanglang.pojo.Section;
 
 public interface SectionDAO extends JpaRepository<Section, Integer>{
-    List<Section> findByBook(Book book);
+    List<Section> findAllByBelong(Book belong);
 }

@@ -39,7 +39,7 @@ test {
 	useJUnitPlatform()
 }
 
-build.dependsOn project(':web').getTasksByName('cnpmBuild', false)
+build.dependsOn project(':web').getTasksByName('npmBuild', false)
 processResources {
     from(project(':web').file('dist').path) {
         into 'static'

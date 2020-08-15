@@ -8,5 +8,5 @@ import xyz.alexhaoge.zhuanglang.pojo.Lesson;
 import xyz.alexhaoge.zhuanglang.pojo.Section;
 
 public interface LessonDAO extends JpaRepository<Lesson, Integer> {
-    List<Lesson> findBySection(Section section);
+    List<Lesson> findAllByBelong(Section belong);
 }

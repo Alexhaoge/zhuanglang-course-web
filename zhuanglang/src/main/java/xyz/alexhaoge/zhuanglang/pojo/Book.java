@@ -1,7 +1,6 @@
 package xyz.alexhaoge.zhuanglang.pojo;
 
-import java.util.Set;
-import java.util.HashSet;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "book")
@@ -35,10 +37,13 @@ public class Book {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
     private Teacher upload;
 
-    @OneToMany(targetEntity = Section.class, mappedBy = "username")
-    private Set<Section> sectionCollection = new HashSet<>();
+    @OneToMany(mappedBy = "belong")
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JsonIgnoreProperties({"belong","upload"})
+    private List<Section> sections;
 
     public int getId(){
         return id;
@@ -59,5 +64,19 @@ public class Book {
     }
     public void setDiscipline(Discipline discipline){
         this.discipline = discipline;
+    }
+
+    public Teacher getUpload(){
+        return upload;
+    }
+    public void setUpload(Teacher upload){
+        this.upload = upload;
+    }
+
+    public List<Section> getSections(){
+        return sections;
+    }
+    public void setSections(List<Section> sections){
+        this.sections = sections;
     }
 }

@@ -1,16 +1,23 @@
 package xyz.alexhaoge.zhuanglang.pojo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name = "class")
+@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,14 +32,17 @@ public class Lesson {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
     private Teacher upload;
 
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "belong", referencedColumnName = "id")
-    @ManyToOne
+    @JsonIgnoreProperties({"lessons","upload"})
     private Section belong;
 
-    @OneToMany(targetEntity = Resource.class, mappedBy = "id")
-    private Set<Resource> resourceCollection = new HashSet<>();
+    @OneToMany(targetEntity = Resource.class, mappedBy = "belong")
+    @JsonIgnoreProperties({"belong","upload"})
+    private List<Resource> resources;
 
     public int getId(){
         return id;
@@ -55,6 +65,13 @@ public class Lesson {
         this.note = note;
     }
 
+    public Teacher getUpload(){
+        return upload;
+    }
+    public void setUpload(Teacher upload){
+        this.upload = upload;
+    }
+
     public Section getBelong(){
         return belong;
     }
@@ -62,10 +79,10 @@ public class Lesson {
         this.belong = belong;
     }
 
-    public Teacher getUpload(){
-        return upload;
+    public List<Resource> getResources(){
+        return resources;
     }
-    public void setUpload(Teacher upload){
-        this.upload = upload;
+    public void setResources(List<Resource> resources){
+        this.resources = resources;
     }
 }
