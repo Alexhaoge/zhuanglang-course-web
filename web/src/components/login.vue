@@ -77,7 +77,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .el-card {
   border: unset;
   background-color: rgba(255, 255, 255, 0.8);

@@ -10,14 +10,26 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 @Table(name = "class")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@NamedEntityGraph(
+    name = "lessonGraph",
+    attributeNodes = {
+        @NamedAttributeNode("resources")
+    }
+)
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +53,8 @@ public class Lesson {
     private Section belong;
 
     @OneToMany(targetEntity = Resource.class, mappedBy = "belong")
+    @OrderBy("path ASC")
+    @NotFound(action = NotFoundAction.IGNORE)
     @JsonIgnoreProperties({"belong","upload"})
     private List<Resource> resources;
 

@@ -36,7 +36,7 @@ public class SectionService {
 
     public List<Section> listByBelong(int bookId) {
         Book book = bService.get(bookId);
-        return sDAO.findAllByBelong(book);
+        return sDAO.findByBelongOrderByNumber(book);
     }
 
 }

@@ -8,12 +8,16 @@ export default new Vuex.Store({
     teacher: {
       username: window.sessionStorage.getItem('teacher' || '[]') == null
         ? '' : JSON.parse(window.sessionStorage.getItem('teacher' || '[]')).username
-    }
+    },
+    lessonID: 0
   },
   mutations: {
     login (state, teacher) {
       state.teacher = teacher
       window.sessionStorage.setItem('teacher', JSON.stringify(teacher))
+    },
+    sendLesson (state, payload) {
+      state.lessonID = payload.lessonID
     }
   }
 })

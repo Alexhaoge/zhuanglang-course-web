@@ -1,5 +1,9 @@
 package xyz.alexhaoge.zhuanglang.dto;
 
+/**
+ * @deprecated
+ */
+@Deprecated
 public class TeacherDTO {
 
     private String username;

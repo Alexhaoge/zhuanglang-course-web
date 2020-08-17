@@ -13,7 +13,8 @@
 		{
 			"label": "npmbuild",
 			"type": "shell",
-			"command": "gradle npmBuild"
+			"command": "gradle npmBuild",
+			"problemMatcher": []
 		},
 		{
 			"label": "build",
@@ -25,6 +26,12 @@
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"label": "backend",
+			"type": "shell",
+			"command": "gradle bootRun",
+			"problemMatcher": []
 		}
 	]
 }

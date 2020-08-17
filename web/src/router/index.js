@@ -4,9 +4,14 @@ import Router from 'vue-router'
 import AppIndex from '../components/home/AppIndex'
 import Login from '../components/login'
 import library from '../components/library/library'
+import libraryhome from '../components/library/home'
 import error from '../components/error'
 
 Vue.use(Router)
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 export default new Router({
   mode: 'history',
@@ -29,11 +34,23 @@ export default new Router({
       component: Login
     },
     {
+      path: '/library',
+      name: 'libraryhome',
+      component: libraryhome
+    },
+    {
       path: '/library/:discipline',
       name: 'library',
-      component: library,
-      children: [
-      ]
+      component: library
+    },
+    {
+      path: '/library/:discipline/:bookID/:sectionID/:lessonID',
+      name: 'library2',
+      component: library
+    },
+    {
+      path: '/error',
+      component: error
     },
     {
       path: '*',

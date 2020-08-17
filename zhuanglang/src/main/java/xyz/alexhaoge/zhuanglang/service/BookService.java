@@ -33,6 +33,6 @@ public class BookService {
     }
 
     public List<Book> listByDiscipline(Discipline discipline) {
-        return bookDAO.findAllByDiscipline(discipline);
+        return bookDAO.findByDisciplineOrderByName(discipline);
     }
 }

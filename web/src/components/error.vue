@@ -1,6 +1,6 @@
 <template>
   <el-container direction="vertical">
-    <div style="height:5rem;"></div>
+    <div style="height:2rem;"></div>
     <el-row type="flex" justify="center">
       <h1 class="efont">错误 404!</h1>
     </el-row>
@@ -18,33 +18,16 @@
         <el-menu-item :key="1" index="/index">首页</el-menu-item>
     </el-menu>
     </el-row>
-    <div :style="{ height: '10rem' }"></div>
   </el-container>
 </template>
 
 <script>
 export default {
-  name: 'error',
-  data () {
-    return {
-      height: `${document.documentElement.clientHeight}`
-    }
-  },
-  created () {
-    this.windowHeight(document.documentElement.clientHeight)
-  },
-  mounted () {
-    const _this = this
-    window.onresize = () => {
-      return (() => {
-        _this.height = `${document.documentElement.clientHeight}`
-      })()
-    }
-  }
+  name: 'error'
 }
 </script>
 
-<style>
+<style scoped>
 .efont {
   font-size: 1.5rem;
   color: azure;

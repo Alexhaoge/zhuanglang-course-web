@@ -36,6 +36,6 @@ public class LessonService {
 
     public List<Lesson> listByBelong(int sectionId) {
         Section section = sService.get(sectionId);
-        return lDAO.findAllByBelong(section);
+        return lDAO.findByBelongOrderByNumber(section);
     }
 }

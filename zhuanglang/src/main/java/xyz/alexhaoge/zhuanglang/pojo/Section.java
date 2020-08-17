@@ -10,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -21,6 +24,12 @@ import org.hibernate.annotations.NotFoundAction;
 @Entity
 @Table(name = "section")
 @JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@NamedEntityGraph(
+    name = "sectionGraph",
+    attributeNodes = {
+        @NamedAttributeNode("lessons")
+    }
+)
 public class Section {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +54,7 @@ public class Section {
 
     @OneToMany(mappedBy = "belong")
     @NotFound(action = NotFoundAction.IGNORE)
+    @OrderBy("number ASC")
     @JsonIgnoreProperties({"belong","upload"})
     private List<Lesson> lessons;
 
