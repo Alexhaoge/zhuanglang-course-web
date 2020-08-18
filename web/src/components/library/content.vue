@@ -1,30 +1,31 @@
 <template>
-  <el-main style="padding: 1.5rem;">
-  <template v-if="lesson !== 0">
-  <el-row v-for="item in resources" :key="item.id">
-    <a :href="'/resources/'+item.path">
-      {{item.id}} {{item.path}}
-    </a>
-    <iframe title="item.path"
-      :src="'/resources/'+item.path">
-      您当前的浏览器不支持页面上的功能，请升级您当前的浏览器版本或使用谷歌浏览器访问当前页面
-    </iframe>
+  <el-main v-if="lesson !== 0">
+  <el-row>
+  <span class="content-title">模块{{thisLesson.belong.belong.number}} 第{{thisLesson.belong.number}}节</span>
   </el-row>
-  </template>
+  <el-row v-for="item in thisLesson.resources" :key="item.id">
+    <el-card class="res-card">
+      <div slot="header" class="res-card-head">
+        <span>{{item.name}} 上传者: {{item.upload.username}}</span>
+        <a :href="'/resources/'+item.path" style="float: right;">下载</a>
+        <p style="clear:both;margin:unset;text-align:left;">{{item.note}}</p>
+      </div>
+      <iframe title="item.path" style="width:100%; height: 30rem;"
+        :src="'//player.bilibili.com/player.html?aid=498838562&bvid=BV1CK411H7d2&cid=210278807&page=1'">
+        您当前的浏览器不支持页面上的功能，请升级您当前的浏览器版本或使用谷歌浏览器访问当前页面
+      </iframe>
+    </el-card>
+  </el-row>
   </el-main>
 </template>
 
 <script>
+
 export default {
   name: 'cont',
-  props: {
-    discipline: {
-      type: String
-    }
-  },
   data () {
     return {
-      resources: [{'id': 1, 'path': '1.pdf', 'md5': null, 'bilibili': null, 'note': 'Test', 'upload': {'username': 'Alexhaoge'}, 'belong': {'id': 1, 'number': 1, 'note': 'Test', 'belong': {'id': 1, 'number': 1, 'note': 'Test', 'belong': {'id': 1, 'name': '八年级上', 'discipline': 'IT'}}}, 'vorS': 'SLIDE'}, {'id': 2, 'path': '1.mp4', 'md5': null, 'bilibili': null, 'note': 'Test', 'upload': {'username': 'Alexhaoge'}, 'belong': {'id': 1, 'number': 1, 'note': 'Test', 'belong': {'id': 1, 'number': 1, 'note': 'Test', 'belong': {'id': 1, 'name': '八年级上', 'discipline': 'IT'}}}, 'vorS': 'VIDEO'}]
+      thisLesson: {}
     }
   },
   computed: {
@@ -40,9 +41,9 @@ export default {
         return
       }
       var _this = this
-      this.$axios.get('/library/lesson/' + les + '/resource').then(resp => {
+      this.$axios.get('/library/lesson/' + les).then(resp => {
         if (resp && resp.status === 200) {
-          _this.resources = resp.data
+          _this.thisLesson = resp.data
         }
       })
     }
@@ -54,10 +55,39 @@ export default {
     discipline: function () {
       this.resources = []
     }
+  },
+  mounted () {
+    this.loadResources()
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.loadResources()
   }
 }
 </script>
 
 <style>
-
+/* .content-title {
+  color: white;
+  font-size: 2rem;
+  float: left;
+  margin-left: 2rem;
+} */
+.res-card {
+  width: 90%;
+  background-color: rgba(255, 255, 255, 0.4);
+  margin: 1rem;
+}
+.res-card-head:before,
+.res-card-head:after {
+  display: table;
+  content: "";
+}
+.res-card-head:after {
+  clear: both
+}
+.res-card-head span {
+  color: black;
+  font-weight: bold;
+  float: left;
+}
 </style>

@@ -29,6 +29,9 @@ public class Resource {
     @Column(name = "md5", nullable = true, length = 32)
     private String md5;
 
+    @Column(name = "name", nullable = false, length = 10)
+    private String name;
+
     @Column(name = "videoorslide")
     @Enumerated(EnumType.STRING)
     private VorS vors;
@@ -41,7 +44,7 @@ public class Resource {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne
-    @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password","name","mail"})
     private Teacher upload;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -68,6 +71,13 @@ public class Resource {
     }
     public void setMD5(String md5){
         this.md5 = md5;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    public void setName(String name){
+        this.name = name;
     }
 
     public VorS getVorS(){

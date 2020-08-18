@@ -9,7 +9,9 @@ export default new Vuex.Store({
       username: window.sessionStorage.getItem('teacher' || '[]') == null
         ? '' : JSON.parse(window.sessionStorage.getItem('teacher' || '[]')).username
     },
-    lessonID: 0
+    lessonID: 0,
+    sectionID: 0,
+    bookID: 0
   },
   mutations: {
     login (state, teacher) {
@@ -17,6 +19,8 @@ export default new Vuex.Store({
       window.sessionStorage.setItem('teacher', JSON.stringify(teacher))
     },
     sendLesson (state, payload) {
+      state.bookID = payload.bookID
+      state.sectionID = payload.sectionID
       state.lessonID = payload.lessonID
     }
   }

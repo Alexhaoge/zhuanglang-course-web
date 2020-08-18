@@ -53,9 +53,9 @@ public class Lesson {
     private Section belong;
 
     @OneToMany(targetEntity = Resource.class, mappedBy = "belong")
-    @OrderBy("path ASC")
+    @OrderBy("name ASC")
     @NotFound(action = NotFoundAction.IGNORE)
-    @JsonIgnoreProperties({"belong","upload"})
+    @JsonIgnoreProperties({"belong"})
     private List<Resource> resources;
 
     public int getId(){
