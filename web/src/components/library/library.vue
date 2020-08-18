@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import category from './category'
-import cont from './content'
-import sect from './section'
-import book from './book'
+import category from './category/category'
+import cont from './resource/content'
+import sect from './section/section'
+import book from './book/book'
 export default {
   name: 'library',
   components: {category, cont, sect, book},

@@ -2,6 +2,7 @@ package xyz.alexhaoge.zhuanglang.pojo;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -49,7 +50,7 @@ public class Book {
     @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
     private Teacher upload;
 
-    @OneToMany(mappedBy = "belong")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "belong")
     @NotFound(action = NotFoundAction.IGNORE)
     @OrderBy("number ASC")
     @JsonIgnoreProperties({"belong","upload"})

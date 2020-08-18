@@ -11,7 +11,8 @@ export default new Vuex.Store({
     },
     lessonID: 0,
     sectionID: 0,
-    bookID: 0
+    bookID: 0,
+    updateCat: false
   },
   mutations: {
     login (state, teacher) {
@@ -22,6 +23,9 @@ export default new Vuex.Store({
       state.bookID = payload.bookID
       state.sectionID = payload.sectionID
       state.lessonID = payload.lessonID
+    },
+    updateCategory (state, payload) {
+      state.updateCat = payload.updateCat
     }
   }
 })

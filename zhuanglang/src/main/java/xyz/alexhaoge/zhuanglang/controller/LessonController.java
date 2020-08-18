@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import xyz.alexhaoge.zhuanglang.pojo.Lesson;
@@ -28,5 +30,10 @@ public class LessonController {
     @GetMapping("/api/library/lesson")
     public List<Lesson> list() {
         return lService.list();
+    }
+
+    @PostMapping("/api/delete/lesson")
+    public void delete(@RequestBody Lesson lesson) {
+        lService.deleteByID(lesson.getId());
     }
 }
