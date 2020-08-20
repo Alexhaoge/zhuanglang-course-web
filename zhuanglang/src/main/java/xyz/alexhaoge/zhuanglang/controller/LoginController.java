@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
 
-import xyz.alexhaoge.zhuanglang.Result;
+import xyz.alexhaoge.zhuanglang.utils.Result;
 import xyz.alexhaoge.zhuanglang.pojo.Teacher;
 import xyz.alexhaoge.zhuanglang.service.TeacherService;
 

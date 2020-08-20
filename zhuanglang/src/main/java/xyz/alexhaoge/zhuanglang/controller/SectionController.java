@@ -3,6 +3,7 @@ package xyz.alexhaoge.zhuanglang.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import xyz.alexhaoge.zhuanglang.pojo.Section;
 import xyz.alexhaoge.zhuanglang.service.SectionService;
+import xyz.alexhaoge.zhuanglang.utils.Result;
 
 @RestController
 public class SectionController {
@@ -32,8 +34,22 @@ public class SectionController {
         return sService.list();
     }
 
-    @PostMapping("/api/delete/section")
+    @CrossOrigin
+    @PostMapping("/api/library/section/new")
+    public Section add(@RequestBody Section section) {
+        sService.modify(section);
+        return section;
+    }
+
+    @PostMapping("/api/library/section/delete")
     public void delete(@RequestBody Section section) {
         sService.deleteByID(section.getId());
+    }
+
+    @CrossOrigin
+    @PostMapping("/api/library/section/edit")
+    public Result edit(@RequestBody Section section) {
+        sService.updateNumberAndNoteByID(section.getNumber(), section.getNote(), section.getId());
+        return new Result(200);
     }
 }

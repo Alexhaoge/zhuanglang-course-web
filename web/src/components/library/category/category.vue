@@ -21,17 +21,20 @@
         </el-submenu>
       </el-submenu>
     </el-menu>
+    <addBook @onSubmit="loadBooks()"></addBook>
   </el-aside>
 </template>
 
 <script>
+import addBook from './addBook'
 export default {
   name: 'category',
-  props: {
-    discipline: {
-      type: String
-    }
-  },
+  components: {addBook},
+  // props: {
+  //   discipline: {
+  //     type: String
+  //   }
+  // },
   data () {
     return {
       books: [{'id': 1, 'name': '八年级上', 'discipline': 'IT', 'upload': {'username': 'Alexhaoge'}, 'sections': [{'id': 1, 'number': 1, 'note': 'Test', 'lessons': [{'id': 1, 'number': 1, 'note': 'Test', 'resources': [{'id': 2, 'path': '1.mp4', 'md5': null, 'name': '1.mp4', 'bilibili': null, 'note': 'Test', 'vorS': 'VIDEO'}, {'id': 1, 'path': '1.pdf', 'md5': null, 'name': '1.pdf', 'bilibili': null, 'note': 'Test', 'vorS': 'SLIDE'}]}, {'id': 3, 'number': 2, 'note': 'Test', 'resources': []}, {'id': 2, 'number': 3, 'note': 'Test', 'resources': []}]}, {'id': 3, 'number': 2, 'note': 'Test', 'lessons': []}, {'id': 2, 'number': 3, 'note': 'Test', 'lessons': [{'id': 4, 'number': 1, 'note': 'Test', 'resources': []}, {'id': 5, 'number': 2, 'note': 'Test', 'resources': []}]}]}, {'id': 2, 'name': '八年级下', 'discipline': 'IT', 'upload': {'username': 'Alexhaoge'}, 'sections': [{'id': 4, 'number': 2, 'note': 'Test', 'lessons': []}, {'id': 5, 'number': 3, 'note': 'Test', 'lessons': [{'id': 6, 'number': 2, 'note': 'Test', 'resources': []}, {'id': 7, 'number': 3, 'note': 'Test', 'resources': []}]}]}],
@@ -68,12 +71,12 @@ export default {
   computed: {
     updateCat () {
       return this.$store.state.updateCat
+    },
+    discipline () {
+      return this.$store.state.subject
     }
   },
   mounted () {
-    this.loadBooks()
-  },
-  beforeRouteUpdate (to, from, next) {
     this.loadBooks()
   },
   watch: {

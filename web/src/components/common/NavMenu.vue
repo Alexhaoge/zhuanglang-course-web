@@ -15,7 +15,7 @@
           {{book.navItem}}
         </el-menu-item>
       </el-submenu>
-      <el-menu-item v-else :key="i" :index="item.name">
+      <el-menu-item v-else :key="i" :index="item.name" :disabled="item.isDisabled">
         {{item.navItem}}
       </el-menu-item>
     </template>
@@ -31,8 +31,8 @@ export default {
   data () {
     return {
       navList: [
-        {name: '/index', navItem: '首页'},
-        {name: '/download', navItem: '下载'},
+        {name: '/', navItem: '首页'},
+        {name: '/download', navItem: '下载', isDisabled: true},
         {name: '/library', navItem: '目录'},
         {name: '/admin', navItem: '管理'}
       ],

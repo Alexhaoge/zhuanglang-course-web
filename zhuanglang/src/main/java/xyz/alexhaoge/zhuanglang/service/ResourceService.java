@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import xyz.alexhaoge.zhuanglang.pojo.Resource;
 import xyz.alexhaoge.zhuanglang.pojo.Lesson;
@@ -26,8 +27,13 @@ public class ResourceService {
         return rDAO.findAll(sort);
     }
 
-    public void modify(Resource resource) {
+    public void addOrUpd(Resource resource) {
         rDAO.save(resource);
+    }
+
+    @Transactional
+    public void updateNameAndNoteByID(String name, String note, int id) {
+        rDAO.updateNameAndNoteByID(name, note, id);
     }
 
     public void deleteByID(int id) {

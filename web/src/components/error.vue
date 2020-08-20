@@ -15,7 +15,7 @@
       background-color="transparent"
       text-color="white"
       style="border-bottom:unset">
-        <el-menu-item :key="1" index="/index">首页</el-menu-item>
+        <el-menu-item :key="1" index="/">首页</el-menu-item>
     </el-menu>
     </el-row>
   </el-container>

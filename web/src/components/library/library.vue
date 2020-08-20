@@ -1,10 +1,7 @@
 <template>
   <el-container class="librarybody">
-  <category :discipline="$route.params.discipline"></category>
-  <!-- <cont v-if="lessonID !== 0"></cont>
-  <section v-else-if="sectionID !== 0"></section>
-  <book v-else></book> -->
-  <component :is="comName" :discipline="$route.params.discipline"></component>
+  <category></category>
+  <component :is="comName"></component>
   </el-container>
 </template>
 
@@ -21,7 +18,10 @@ export default {
       comName: 'book'
     }
   },
-  mounted () {
+  created () {
+    // 父子组件的执行顺序为，父组件beforeCreated ->父组件created
+    // ->父组件beforeMounted ->子组件beforeCreated ->子组件created
+    // ->子组件beforeMounted ->子组件mounted -> 父组件mounted
     var Disciplines = ['IT', 'MUSIC', 'ART', 'PE']
     var s = this.$route.params.discipline.toUpperCase()
     var isValidDiscipline = false
@@ -34,6 +34,7 @@ export default {
     if (isValidDiscipline === false) {
       this.$router.push('/error')
     }
+    this.$store.commit('updateSubject', {subject: s})
     this.comSwitch()
   },
   computed: {
@@ -62,6 +63,11 @@ export default {
     },
     lessonID: function () {
       this.comSwitch()
+    },
+    $route (to, from) {
+      this.$store.commit('updateSubject', {subject: this.$route.params.discipline.toUpperCase()})
+      this.$store.commit('sendLesson', { lessonID: 0, bookID: 0, sectionID: 0 })
+      console.log(this.$store.state.subject)
     }
   }
 }

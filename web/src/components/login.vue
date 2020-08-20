@@ -7,7 +7,8 @@
   <el-row type="flex" justify="center">
   <el-col :xs="22" :sm="16" :md="8">
   <el-card >
-    <el-form class="login-container" :model="loginForm" :rules="rules" ref="loginForm">
+    <el-form class="login-container" :model="loginForm" :inline-message="true"
+      :rules="rules" ref="loginForm">
       <h3 class="login_title">系统登录</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username" style="width: 70%;"
@@ -50,7 +51,7 @@ export default {
   methods: {
     login () {
       var _this = this
-      console.log(this.$store.state)
+      console.log(this.$store.state.teacher)
       this.$axios
         .post('/login', {
           username: this.loginForm.username,

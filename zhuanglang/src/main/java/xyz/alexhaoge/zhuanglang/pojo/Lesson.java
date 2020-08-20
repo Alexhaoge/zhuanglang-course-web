@@ -44,7 +44,7 @@ public class Lesson {
     private String note;
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
     private Teacher upload;
 

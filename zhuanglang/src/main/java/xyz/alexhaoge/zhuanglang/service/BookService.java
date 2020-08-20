@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import xyz.alexhaoge.zhuanglang.dao.BookDAO;
 import xyz.alexhaoge.zhuanglang.pojo.Book;
@@ -34,5 +35,10 @@ public class BookService {
 
     public List<Book> listByDiscipline(Discipline discipline) {
         return bookDAO.findByDisciplineOrderByName(discipline);
+    }
+
+    @Transactional
+    public void updateNameByID(String name, int id) {
+        bookDAO.updateNameByID(name, id);
     }
 }

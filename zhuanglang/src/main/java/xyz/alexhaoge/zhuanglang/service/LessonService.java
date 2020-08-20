@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import xyz.alexhaoge.zhuanglang.pojo.Section;
 import xyz.alexhaoge.zhuanglang.pojo.Lesson;
@@ -28,6 +29,11 @@ public class LessonService {
 
     public void modify(Lesson lesson) {
         lDAO.save(lesson);
+    }
+
+    @Transactional
+    public void updateNumberAndNoteByID(int number, String note, int id) {
+        lDAO.updateNumberAndNoteByID(number, note, id);
     }
 
     public void deleteByID(int id) {

@@ -1,5 +1,6 @@
 package xyz.alexhaoge.zhuanglang.pojo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -23,7 +24,7 @@ public class Resource {
     @Column(name = "id")
     int id;
 
-    @Column(name = "path", nullable = false, length = 60)
+    @Column(name = "path", nullable = false, length = 64)
     String path;
 
     @Column(name = "md5", nullable = true, length = 32)
@@ -36,14 +37,14 @@ public class Resource {
     @Enumerated(EnumType.STRING)
     private VorS vors;
 
-    @Column(name = "bilibili", nullable = true, length = 50)
+    @Column(name = "bilibili", nullable = true, length = 64)
     private String bilibili;
 
     @Column(name = "note", length=255, nullable = true)
     String note;
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     @JsonIgnoreProperties({"books","sections","lessons","resources","password","name","mail"})
     private Teacher upload;
 

@@ -18,15 +18,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/index'
+      component: AppIndex
     },
     {
       path: '/index',
       name: 'AppIndex',
-      component: AppIndex,
-      meta: {
-        requireAuth: false
-      }
+      component: AppIndex
     },
     {
       path: '/login',
@@ -43,11 +40,11 @@ export default new Router({
       name: 'library',
       component: library
     },
-    {
-      path: '/library/:discipline/:bookID/:sectionID/:lessonID',
-      name: 'library2',
-      component: library
-    },
+    // {
+    //   path: '/library/:discipline/:bookID/:sectionID/:lessonID',
+    //   name: 'library2',
+    //   component: library
+    // },
     {
       path: '/error',
       component: error
