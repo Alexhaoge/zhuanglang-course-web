@@ -1,5 +1,11 @@
 package xyz.alexhaoge.zhuanglang.shiro;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javax.servlet.Filter;
+
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -18,10 +24,24 @@ public class ShiroConfig {
         return new LifecycleBeanPostProcessor();
     }
 
+    public URLPathMatchingFilter getURLPathMatchingFilter() {
+        return new URLPathMatchingFilter();
+    }
+
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
+
+        Map<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
+        Map<String, Filter> customizedFilter = new HashMap<>();
+
+        customizedFilter.put("url", getURLPathMatchingFilter());
+
+        filterChainDefinitionMap.put("/api/**", "url");
+        shiroFilterFactoryBean.setFilters(customizedFilter);
+        filterChainDefinitionMap.put("/api/authentication", "authc");
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
 

@@ -34,7 +34,8 @@
     <el-form-item label="所属学校" :label-width="formLabelWidth" prop="nkuorzl">
       <el-select v-model="regForm.nkuorzl" placeholder="请选择您的学校">
         <el-option label="南开大学" :value="'NKU'"></el-option>
-        <el-option label="庄浪县的中学" :value="'ZHUANGLANG'"></el-option>
+        <el-option label="庄浪县思源实验学校" :value="'ZHUANGLANG'"></el-option>
+        <el-option label="其他中学" :value="'WTF'"></el-option>
       </el-select>
     </el-form-item>
     <el-form-item label="工号或学号" :label-width="formLabelWidth" prop="personNo">
@@ -121,7 +122,7 @@ export default {
       this.$axios.post('/register', {
         username: this.regForm.username,
         password: this.regForm.password,
-        nkuorzl: this.regForm.nkuorzl,
+        nkuorzl: this.regForm.nkuorzl === 'NKU' ? 'NKU' : 'ZHUANGLANG',
         personNo: this.regForm.personNo,
         name: this.regForm.name,
         mail: this.regForm.mail
@@ -130,7 +131,7 @@ export default {
           this.$alert('注册成功', '提示', {
             confirmButtonText: '确定'
           })
-          _this.$router.replace('/login')
+          _this.$router.replace('/index')
         } else {
           this.$alert(resp.data.message, '提示', {
             confirmButtonText: '确定'

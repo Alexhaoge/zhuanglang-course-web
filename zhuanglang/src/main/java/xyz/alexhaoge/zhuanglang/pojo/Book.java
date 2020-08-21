@@ -39,7 +39,7 @@ public class Book {
     @Column(name = "id")
     int id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 10)
     private String name;
 
     @Column(name = "discipline", nullable = false)
