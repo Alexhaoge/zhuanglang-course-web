@@ -1,6 +1,6 @@
 <template>
 <el-container direction="vertical">
-  <div style="height:3rem"></div>
+  <div style="height:5rem"></div>
   <el-row type="flex" class="row-bg" justify="space-around">
     <el-col :xs="20" :sm="16" :md="16">
     <el-carousel
@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import Login from '@/components/login'
-import divider from '@/components/common/divider'
+import Login from '../admin/login'
+import divider from '../common/divider'
 export default {
   name: 'AppIndex',
   components: {Login, divider},
@@ -48,7 +48,6 @@ export default {
         {src: require('@/assets/banner1.png'), id: 0},
         {src: require('@/assets/banner2.png'), id: 1}
       ],
-      bannerHeight: '',
       Courses: [
         {Name: '信息技术', img: require('@/assets/it.png'), url: '/library/it'},
         {Name: '音乐', img: require('@/assets/music.png'), url: '/library/music'},
@@ -61,19 +60,6 @@ export default {
     jump (url) {
       this.$router.push(url)
     }
-  //   imgLoad () {
-  //     this.$nextTick(() => {
-  //       this.bannerHeight = this.$refs.bannerHeight[0].height
-  //       console.log(this.$refs.bannerHeight[0].height)
-  //     })
-  //   }
-  // },
-  // mounted () {
-  //   this.imgLoad()
-  //   window.addEventListener('resize', () => {
-  //     this.bannerHeight = this.$refs.bannerHeight[0].height
-  //     this.imgLoad()
-  //   }, false)
   }
 }
 </script>

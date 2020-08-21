@@ -1,5 +1,5 @@
 package xyz.alexhaoge.zhuanglang.pojo;
 
-public enum NKUorZL {
+public enum NkuorZl {
     NKU, ZHUANGLANG
 }

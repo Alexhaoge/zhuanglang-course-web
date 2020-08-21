@@ -35,19 +35,19 @@ public class SectionController {
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/section/new")
+    @PostMapping("/api/new/library/section")
     public Section add(@RequestBody Section section) {
         sService.modify(section);
         return section;
     }
 
-    @PostMapping("/api/library/section/delete")
+    @PostMapping("/api/delete/library/section")
     public void delete(@RequestBody Section section) {
         sService.deleteByID(section.getId());
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/section/edit")
+    @PostMapping("/api/edit/library/section")
     public Result edit(@RequestBody Section section) {
         sService.updateNumberAndNoteByID(section.getNumber(), section.getNote(), section.getId());
         return new Result(200);

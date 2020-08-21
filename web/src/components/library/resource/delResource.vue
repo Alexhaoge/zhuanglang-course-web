@@ -22,7 +22,7 @@ export default {
         type: 'warning'
       }).then(() => {
         this.$axios
-          .post('/library/resource/delete', {id: this.rid}).then(resp => {
+          .post('/delete/library/resource', {id: this.rid}).then(resp => {
             if (resp && resp.status === 200) {
               this.$emit('onSubmit')
               this.$message({type: 'success', message: '删除成功'})

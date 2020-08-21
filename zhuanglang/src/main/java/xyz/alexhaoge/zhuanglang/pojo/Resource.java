@@ -33,11 +33,11 @@ public class Resource {
     @Column(name = "name", nullable = false, length = 10)
     private String name;
 
-    @Column(name = "videoorslide")
+    @Column(name = "videoorslide", nullable = false)
     @Enumerated(EnumType.STRING)
     private VorS vors;
 
-    @Column(name = "bilibili", nullable = true, length = 64)
+    @Column(name = "bilibili", nullable = true, length = 12)
     private String bilibili;
 
     @Column(name = "note", length=255, nullable = true)
@@ -45,7 +45,7 @@ public class Resource {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
-    @JsonIgnoreProperties({"books","sections","lessons","resources","password","name","mail"})
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password","name","mail","salt","nkuorzl","personNo","mail"})
     private Teacher upload;
 
     @ManyToOne(fetch = FetchType.LAZY)

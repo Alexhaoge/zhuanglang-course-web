@@ -35,19 +35,19 @@ public class LessonController {
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/lesson/new")
+    @PostMapping("/api/new/library/lesson")
     public Lesson add(@RequestBody Lesson lesson) {
         lService.modify(lesson);
         return lesson;
     }
 
-    @PostMapping("/api/library/lesson/delete")
+    @PostMapping("/api/delete/library/lesson")
     public void delete(@RequestBody Lesson lesson) {
         lService.deleteByID(lesson.getId());
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/lesson/edit")
+    @PostMapping("/api/edit/library/lesson")
     public Result edit(@RequestBody Lesson lesson) {
         lService.updateNumberAndNoteByID(lesson.getNumber(), lesson.getNote(), lesson.getId());
         return new Result(200);

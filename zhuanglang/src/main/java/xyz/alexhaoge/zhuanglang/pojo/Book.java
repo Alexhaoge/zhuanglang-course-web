@@ -48,7 +48,7 @@ public class Book {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
-    @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password","salt","nkuorzl","personNo","mail"})
     private Teacher upload;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "belong")

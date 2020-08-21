@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$axios.post('/library/section/edit', {
+      this.$axios.post('/edit/library/section', {
         id: this.sid,
         number: this.esForm.number,
         note: this.esForm.note

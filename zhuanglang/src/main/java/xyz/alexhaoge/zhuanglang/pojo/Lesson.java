@@ -45,7 +45,7 @@ public class Lesson {
 
     @JoinColumn(name = "upload", referencedColumnName = "username")
     @ManyToOne(fetch = FetchType.EAGER, optional = true, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
-    @JsonIgnoreProperties({"books","sections","lessons","resources","password"})
+    @JsonIgnoreProperties({"books","sections","lessons","resources","password","salt","nkuorzl","personNo","mail"})
     private Teacher upload;
 
     @ManyToOne(fetch = FetchType.LAZY)

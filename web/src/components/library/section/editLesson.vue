@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      this.$axios.post('/library/lesson/edit', {
+      this.$axios.post('/edit/library/lesson', {
         id: this.lid,
         number: this.elForm.number,
         note: this.elForm.note

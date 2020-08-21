@@ -10,6 +10,8 @@ group = 'xyz.alexhaoge'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '8'
 
+
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -29,6 +31,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'mysql:mysql-connector-java'
+
+	implementation 'org.apache.shiro:shiro-spring:1.6.0'
+	implementation 'org.apache.shiro:shiro-web:1.6.0'
+	implementation 'org.springframework:spring-webmvc:5.2.8.RELEASE'
+
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

@@ -41,19 +41,19 @@ public class BookController {
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/book/new")
+    @PostMapping("/api/new/library/book")
     public Book add(@RequestBody Book book) {
         bService.modify(book);
         LOG.info("==========Book created========");
         return book;
     }
 
-    @PostMapping("/api/library/book/delete")
+    @PostMapping("/api/delete/library/book")
     public void delete(@RequestBody Book book) {
         bService.deleteByID(book.getId());
     }
 
-    @PostMapping("/api/library/book/edit")
+    @PostMapping("/api/edit/library/book")
     public Result edit(@RequestBody Book book) {
         bService.updateNameByID(book.getName(), book.getId());
         return new Result(200);

@@ -52,7 +52,7 @@ export default {
     },
     onSubmit () {
       this.$axios
-        .post('/library/section/new', {
+        .post('/new/library/section', {
           id: this.form.id,
           number: this.form.number,
           note: this.form.note,

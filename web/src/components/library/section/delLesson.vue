@@ -27,7 +27,7 @@ export default {
           this.$alert('请先删除该小节中所含资源', '无法删除', { confirmButtonText: '确定' })
         } else {
           this.$axios
-            .post('/library/lesson/delete', {id: this.lid}).then(resp => {
+            .post('/delete/library/lesson', {id: this.lid}).then(resp => {
               if (resp && resp.status === 200) {
                 this.$message({type: 'success', message: '删除成功'})
                 this.$store.commit('updateCategory', {updateCat: true})

@@ -4,7 +4,7 @@
     <el-header>
     <nav-menu class="nav-menu"></nav-menu>
     </el-header>
-    <router-view/>
+    <router-view v-if="flag"/>
     <div style="height: 3rem"></div>
     <el-footer>
       <Footer class="footer"></Footer>
@@ -19,18 +19,30 @@ import Footer from '@/components/common/Footer'
 export default {
   name: 'App',
   components: {NavMenu, Footer},
+  provide () {
+    return {
+      reload: this.reload
+    }
+  },
   data () {
     return {
       apps: {
         minHeight: '',
         backgroundcolor: 'rgb(113,10,83)',
         overflow: 'auto'
-      }
+      },
+      flag: true
     }
   },
   methods: {
     getHeight () {
       this.apps.height = window.innerHeight + 'px'
+    },
+    reload () {
+      this.flag = false
+      this.$nextTick(() => {
+        this.flag = true
+      })
     }
   },
   created () {

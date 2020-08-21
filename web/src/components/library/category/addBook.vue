@@ -53,7 +53,7 @@ export default {
         cancelButtonText: '取消',
         type: 'warning'
       }).then(() => {
-        this.$axios.post('/library/book/new', {
+        this.$axios.post('/new/library/book', {
           id: this.ebForm.id,
           name: this.ebForm.name,
           discipline: this.$store.state.subject

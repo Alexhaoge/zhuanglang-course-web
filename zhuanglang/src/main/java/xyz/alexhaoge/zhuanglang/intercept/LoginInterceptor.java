@@ -2,12 +2,12 @@ package xyz.alexhaoge.zhuanglang.intercept;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.springframework.util.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.HandlerInterceptor;
-
-import xyz.alexhaoge.zhuanglang.pojo.Teacher;
 
 public class LoginInterceptor implements HandlerInterceptor {
     
@@ -15,31 +15,22 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest sRequest, 
         HttpServletResponse sResponse, Object obj) throws Exception{
         
-        HttpSession session = sRequest.getSession();
-        String contextPath = session.getServletContext().getContextPath();
-        String[] requireAuthPages = new String[]{
-            "index",
-        };
-        String uri = sRequest.getRequestURI();
-        String page = uri.replace(contextPath+"/", "");
-        if(begingWith(page, requireAuthPages)){
-            Teacher teacher = (Teacher) session.getAttribute("teacher");
-            if(teacher==null) {
-                sResponse.sendRedirect("login");
-                return false;
-            }
+        if (HttpMethod.OPTIONS.toString().equals(sRequest.getMethod())) {
+            sResponse.setStatus(HttpStatus.NO_CONTENT.value());
         }
-        return true;
+            
+        Subject subject = SecurityUtils.getSubject();
+        return subject.isAuthenticated() || subject.isRemembered();
     }
 
-    private boolean begingWith(String page, String[] requiredAuthPages) {
-        boolean result = false;
-        for (String requiredAuthPage : requiredAuthPages) {
-            if(StringUtils.startsWithIgnoreCase(page, requiredAuthPage)) {
-                result = true;
-                break;
-            }
-        }
-        return result;
-    }
+    // private boolean begingWith(String page, String[] requiredAuthPages) {
+    //     boolean result = false;
+    //     for (String requiredAuthPage : requiredAuthPages) {
+    //         if(StringUtils.startsWithIgnoreCase(page, requiredAuthPage)) {
+    //             result = true;
+    //             break;
+    //         }
+    //     }
+    //     return result;
+    // }
 }

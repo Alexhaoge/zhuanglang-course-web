@@ -27,7 +27,7 @@ export default {
           this.$alert('请先删除该模块中所含小节', '无法删除', { confirmButtonText: '确定' })
         } else {
           this.$axios
-            .post('/library/section/delete', {id: this.sid}).then(resp => {
+            .post('/delete/library/section', {id: this.sid}).then(resp => {
               if (resp && resp.status === 200) {
                 this.$message({type: 'success', message: '删除成功'})
                 this.$store.commit('updateCategory', {updateCat: true})

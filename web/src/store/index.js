@@ -5,10 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    teacher: {
-      username: window.sessionStorage.getItem('teacher' || '[]') == null
-        ? '' : JSON.parse(window.sessionStorage.getItem('teacher' || '[]')).username
-    },
+    username: window.localStorage.getItem('username' || '[]') == null
+      ? '' : JSON.parse(window.localStorage.getItem('username' || '[]')).username,
     lessonID: 0,
     sectionID: 0,
     bookID: 0,
@@ -16,9 +14,9 @@ export default new Vuex.Store({
     subject: ''
   },
   mutations: {
-    login (state, teacher) {
-      state.teacher = teacher
-      window.sessionStorage.setItem('teacher', JSON.stringify(teacher))
+    login (state, data) {
+      state.username = data.data
+      window.localStorage.setItem('username', JSON.stringify(data))
     },
     sendLesson (state, payload) {
       state.bookID = payload.bookID
@@ -30,6 +28,12 @@ export default new Vuex.Store({
     },
     updateSubject (state, payload) {
       state.subject = payload.subject
+    },
+    logout (state) {
+      // 注意不能用 null 清除，否则将无法判断 user 里具体的内容
+      state.username = ''
+      window.localStorage.removeItem('username')
+      state.adminMenus = []
     }
   }
 })

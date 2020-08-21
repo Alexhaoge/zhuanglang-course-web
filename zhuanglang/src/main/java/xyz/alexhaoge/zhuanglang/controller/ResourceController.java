@@ -47,7 +47,7 @@ public class ResourceController {
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/resource/delete")
+    @PostMapping("/api/delete/library/resource")
     public Result delete(@RequestBody Resource resource) {
         int id = resource.getId();
         String pathName = rService.get(id).getPath();
@@ -66,7 +66,7 @@ public class ResourceController {
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/resource/new")
+    @PostMapping("/api/new/library/resource")
     public Resource add(@RequestBody Resource resource) {
         LOG.info("===========Resource new=========");
         rService.addOrUpd(resource);
@@ -74,7 +74,7 @@ public class ResourceController {
     }
 
     @CrossOrigin
-    @PostMapping("/api/library/resource/edit")
+    @PostMapping("/api/edit/library/resource")
     public Result edit(@RequestBody Resource resource) {
         rService.updateNameAndNoteByID(resource.getName(), resource.getNote(), resource.getId());
         return new Result(200);

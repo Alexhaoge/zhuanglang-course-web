@@ -32,8 +32,8 @@
             <el-option label="课件" :value="'SLIDE'"></el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="B站iframe链接" :label-width="formLabelWidth" prop="bilibili">
-          <el-input v-model="form.bilibili" :disabled="!bilibiliVisible" autocomplete="off" placeholder='B站iframe格式分享链接'></el-input>
+        <el-form-item label="B站bv视频号" :label-width="formLabelWidth" prop="bilibili">
+          <el-input v-model="form.bilibili" :disabled="!bilibiliVisible" autocomplete="off" placeholder='B站bv号'></el-input>
         </el-form-item>
         <el-form-item prop="id" style="height: 0">
           <el-input type="hidden" v-model="form.id" autocomplete="off"></el-input>
@@ -62,10 +62,15 @@ export default {
       fileList: [],
       rules: {
         name: [{ required: true, message: '请输入资源名称', trigger: 'blur' }, { min: 1, max: 10, message: '长度在 1 到 10 个字符' }],
-        vorS: [{ required: true, message: '请选择资源类型', trigger: 'blur' }],
+        vorS: [{ required: true, message: '请选择资源类型', trigger: ['blur', 'change'] }],
         note: [{ min: 1, max: 255, message: '长度在 1 到 255 个字符' }],
-        bilibili: [{ min: 1, max: 64, message: '长度在 1 到 64 个字符' }]
+        bilibili: [{ min: 12, max: 12, message: '请输入正确的bv号（12个字符）' }]
       }
+    }
+  },
+  mounted () {
+    if (this.$store.state.username === '' || this.$store.state.username == null) {
+      this.$router.push('/login')
     }
   },
   methods: {
@@ -78,7 +83,7 @@ export default {
     },
     onSubmit () {
       this.$axios
-        .post('/library/resource/new', {
+        .post('/new/library/resource', {
           id: this.form.id,
           name: this.form.name,
           path: this.form.path,
