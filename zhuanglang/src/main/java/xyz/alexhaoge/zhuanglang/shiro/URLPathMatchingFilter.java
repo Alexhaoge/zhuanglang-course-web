@@ -17,7 +17,7 @@ public class URLPathMatchingFilter extends PathMatchingFilter{
     
     private static final Logger LOG = LoggerFactory.getLogger(URLPathMatchingFilter.class);
 
-    private static String[] urlAuthNotRequired = {"/api/login", "/api/logout", "/api/library/", "/api/resources", "/index.html"};
+    private static String[] urlAuthNotRequired = {"/api/library/", "/api/resources", "/api/login", "/api/logout", "/api/upload/", "/api/register", "/index.html"};
 
     @Override
     protected boolean onPreHandle(ServletRequest request,

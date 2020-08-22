@@ -12,6 +12,9 @@ public class WebConfig implements WebMvcConfigurer{
     @Value("${web.upload.path}")
     private String uploadPath;
 
+    @Value("${web.deploy.ip}")
+    private String deployedIP;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/api/resources/**").addResourceLocations("file:"+uploadPath);
@@ -21,7 +24,7 @@ public class WebConfig implements WebMvcConfigurer{
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowCredentials(true)
-                .allowedOrigins("http://localhost:8080")
+                .allowedOrigins("*")
                 .allowedMethods("POST", "GET", "PUT", "OPTIONS","DELETE")
                 .allowedHeaders("*")
                 .maxAge(3600);
