@@ -39,3 +39,11 @@ yarn-error.log*
 ### VS Code ###
 !/.vscode/tasks.json
 !/.vscode/settings.json
+.gradle/6.5.1/executionHistory/executionHistory.bin
+.gradle/6.5.1/executionHistory/executionHistory.lock
+.gradle/6.5.1/fileHashes/fileHashes.bin
+.gradle/6.5.1/fileHashes/fileHashes.lock
+.gradle/6.5.1/javaCompile/classAnalysis.bin
+.gradle/6.5.1/javaCompile/javaCompile.lock
+.gradle/6.5.1/javaCompile/taskHistory.bin
+.gradle/buildOutputCleanup/buildOutputCleanup.lock

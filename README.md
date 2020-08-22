@@ -52,6 +52,6 @@ We can also put static files of front end into nginx and run backend with tomcat
     }
     ```
 #### NOTE
-Deploy on seprate port may bring **cross-orgin** access problems, the solution is to change the configuration of `$axios` in `main.js` and `site-enabled` in **Nginx**. Please take a look at [the production branch](https://github.com/Alexhaoge/zhuanglang-course-web/tree/production) and its [release]() for reference.
+Deploy on seprate port may bring **cross-orgin** access problems, the solution is to change the configuration of `$axios` in `main.js` and `site-enabled` in **Nginx**. Please take a look at [the production branch](https://github.com/Alexhaoge/zhuanglang-course-web/tree/production) and its [release](https://github.com/Alexhaoge/zhuanglang-course-web/releases/tag/v0.0.1) for reference.
 ## Acknowledge
 The design of the whole website take reference from *Evan-Nightly's* [White-Jotter Project](https://github.com/Antabot/White-Jotter). Thanks a lot for his [tutorials](https://blog.csdn.net/Neuf_Soleil/article/details/88925013).
