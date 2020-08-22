@@ -46,13 +46,11 @@ test {
 	useJUnitPlatform()
 }
 
-build.dependsOn project(':web').getTasksByName('npmBuild', false)
-processResources {
-    from(project(':web').file('dist').path) {
-        into 'static'
-    }
-    from(project(':web').file('dist/index.html').path) {
-        into 'templates'
+jar {
+    baseName = 'zhuanglang'
+    version = '0.0.1'
+    manifest {
+        attributes "Manifest-Version": 1.0,
+            'Main-Class': 'xyz.alexhaoge.DemoApplication'
     }
 }
-apply plugin: 'war'
