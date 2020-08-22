@@ -39,11 +39,12 @@ public class LoginController {
         String username = reqTeacher.getUsername();
         username = HtmlUtils.htmlEscape(username);
         Subject subject = SecurityUtils.getSubject();
-
+        LOG.info("========Teacher login called!=========");
         UsernamePasswordToken uToken = new UsernamePasswordToken(username, reqTeacher.getPassword());
         uToken.setRememberMe(rem == 1);
         try {
             subject.login(uToken);
+            LOG.info("Teacher {} login success!", username);
             return ResultFactory.buildSuccessResult(username);
         } catch (AuthenticationException e) {
             return ResultFactory.buildFailResult("账号密码错误");

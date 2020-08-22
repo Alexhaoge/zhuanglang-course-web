@@ -1,7 +1,7 @@
 <template>
   <div style="float:right">
     <el-button type="info" style="float:right; margin-right:5rem;"
-      @click="dialogFormVisible = true">添加教学资源</el-button>
+      @click="clickshow">添加教学资源</el-button>
     <el-dialog
       title="添加资源"
       :visible.sync="dialogFormVisible"
@@ -68,11 +68,6 @@ export default {
       }
     }
   },
-  mounted () {
-    if (this.$store.state.username === '' || this.$store.state.username == null) {
-      this.$router.push('/login')
-    }
-  },
   methods: {
     clear () {
       if (this.form.path !== '') {
@@ -131,6 +126,11 @@ export default {
     getUrl () {
       var url = 'http://localhost:8443/api/upload/' + this.$store.state.subject + '/' + this.$store.state.bookID + '/' + this.$store.state.sectionID + '/' + this.$store.state.lessonID
       return url
+    },
+    clickshow () {
+      if (this.$store.state.username === '' || this.$store.state.username == null) {
+        this.dialogFormVisible = false
+      } else { this.dialogFormVisible = true }
     }
   }
 }
