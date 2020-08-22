@@ -1,7 +1,7 @@
 <template>
   <el-main v-if="lesson !== 0">
   <el-row>
-  <span class="content-title">模块{{$store.state.sectionID}} 第{{thisLesson.number}}节</span>
+  <span class="content-title">模块{{thisLesson.belong.number}} 第{{thisLesson.number}}节</span>
   <newResource :belongID="thisLesson.id" @onSubmit="loadResources()"></newResource>
   </el-row>
   <el-row v-for="item in thisLesson.resources" :key="item.id">
