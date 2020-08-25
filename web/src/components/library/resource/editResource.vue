@@ -14,6 +14,9 @@
         <el-form-item label="简介" :label-width="formLabelWidth" prop="note">
           <el-input type="textarea" v-model="erForm.note" autocomplete="off" placeholder="资源简介"></el-input>
         </el-form-item>
+        <el-form-item label="视频BV号" :label-width="formLabelWidth" prop="note">
+          <el-input v-model="erForm.bilibili" autocomplete="off" placeholder="B站BV号"></el-input>
+        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="dialogFormVisible = false">取 消</el-button>
@@ -31,7 +34,7 @@ export default {
   },
   data () {
     return {
-      erForm: {name: '', note: ''},
+      erForm: {name: '', note: '', bilibili: ''},
       formLabelWidth: '120px',
       dialogFormVisible: false,
       rules: {
@@ -39,7 +42,8 @@ export default {
           { required: true, message: '请输入资源名称', trigger: 'blur' },
           { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
         ],
-        note: [{ min: 1, max: 255, message: '长度在 1 到 255 个字符', trigger: 'blur' }]
+        note: [{ min: 1, max: 255, message: '长度在 1 到 255 个字符', trigger: 'blur' }],
+        bilibili: [{ min: 12, max: 12, message: '12位字符，以BV开头', trigger: 'blur' }]
       }
     }
   },
@@ -48,7 +52,8 @@ export default {
       this.$axios.post('/edit/library/resource', {
         id: this.rid,
         name: this.erForm.name,
-        note: this.erForm.note
+        note: this.erForm.note,
+        bilibili: this.erForm.bilibili
       }).then(resp => {
         if (resp && resp.status === 200) {
           this.$message({type: 'success', message: '编辑成功'})
@@ -58,7 +63,7 @@ export default {
       })
     },
     clear () {
-      this.erForm = {name: '', note: ''}
+      this.erForm = {name: '', note: '', bilibili: ''}
     }
   }
 }

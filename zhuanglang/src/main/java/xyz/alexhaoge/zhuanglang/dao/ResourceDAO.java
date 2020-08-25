@@ -14,6 +14,6 @@ public interface ResourceDAO extends JpaRepository<Resource, Integer> {
     List<Resource> findAllByBelong(Lesson belong);
 
     @Modifying
-    @Query("update Resource r set r.name = ?1, r.note = ?2 where r.id = ?3")
-    void updateNameAndNoteByID(String name, String note, int id);
+    @Query("update Resource r set r.name = ?1, r.note = ?2, r.bilibili = ?3 where r.id = ?4")
+    void updateNameNoteAndBilibiliByID(String name, String note, String bilibili, int id);
 }

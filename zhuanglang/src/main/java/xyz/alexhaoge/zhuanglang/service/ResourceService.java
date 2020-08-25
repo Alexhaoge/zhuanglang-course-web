@@ -32,8 +32,8 @@ public class ResourceService {
     }
 
     @Transactional
-    public void updateNameAndNoteByID(String name, String note, int id) {
-        rDAO.updateNameAndNoteByID(name, note, id);
+    public void updateNameNoteAndBilibiliByID(String name, String note, String bilibili, int id) {
+        rDAO.updateNameNoteAndBilibiliByID(name, note, bilibili, id);
     }
 
     public void deleteByID(int id) {

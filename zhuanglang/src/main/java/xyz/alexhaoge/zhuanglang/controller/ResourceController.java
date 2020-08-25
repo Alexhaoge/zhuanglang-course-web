@@ -76,7 +76,7 @@ public class ResourceController {
     @CrossOrigin
     @PostMapping("/api/edit/library/resource")
     public Result edit(@RequestBody Resource resource) {
-        rService.updateNameAndNoteByID(resource.getName(), resource.getNote(), resource.getId());
+        rService.updateNameNoteAndBilibiliByID(resource.getName(), resource.getNote(), resource.getBilibili(), resource.getId());
         return new Result(200);
     }
 }
