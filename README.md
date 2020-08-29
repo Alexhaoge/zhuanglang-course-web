@@ -10,7 +10,7 @@
 ### Initialization
 1. Clone this repositroy.
 2. Install MySQL and login as administrator.
-3. Create database, user, and tables with the scipt [zhuanglang.sql](https://github.com/Alexhaoge/zhuanglang-course-web/blob/master/zhuanglang.sql).
+3. Create database, user, and tables with the script [zhuanglang.sql](https://github.com/Alexhaoge/zhuanglang-course-web/blob/master/zhuanglang.sql).
 4. Set `web.upload.path` in `zhuanglang/src/main/resources/application.properties` for diretory to store lesson resources like pdf or mp4.
 ### Run
 Run these commands in project workspace. The website is at `http://localhost:8443/`
