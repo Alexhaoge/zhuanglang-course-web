@@ -24,7 +24,7 @@ jobs:
       matrix:
         # Override automatic language detection by changing the below list
         # Supported options are ['csharp', 'cpp', 'go', 'java', 'javascript', 'python']
-        language: ['java', 'javascript']
+        language: ['javascript']
         # Learn more...
         # https://docs.github.com/en/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#overriding-automatic-language-detection
 
@@ -64,7 +64,8 @@ jobs:
     #    uses a compiled language
 
     - run: |
-       gradle build
+      cd ./web
+      npm build
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
