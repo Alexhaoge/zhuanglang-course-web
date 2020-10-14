@@ -14,9 +14,7 @@ yarn-error.log*
 *.sln
 
 # Ignore Gradle project-specific cache directory
-/.gradle/
-/web/.gradle/
-/zhuanglang/.gradle/
+**/.gradle/
 
 # Ignore Gradle build output directory
 /web/build/
