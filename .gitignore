@@ -17,7 +17,6 @@ yarn-error.log*
 **/.gradle/
 
 # Ignore Gradle build output directory
-/web/build/
 /zhuanglang/build/
 /zhuanglang/HELP.md
 /zhuanglang/.gradle
