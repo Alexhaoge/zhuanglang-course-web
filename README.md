@@ -4,7 +4,8 @@
  Demo site is [here](http://114.116.233.111:8080/).
  
  这是一个为甘肃庄浪县思源实验学校搭建的教学资源平台，用于收录甘肃初中的信息技术、音乐、体育、美术课程的教学资源。也是我2020年7月参加“南开大学服务学习：计算机教育与科技扶贫”课程的实践成果。  
- [网站](http://114.116.233.111:8080/)已开始试运行。
+ [网站](http://114.116.233.111:8080/)已开始试运行。  
+![CodeQL](https://github.com/Alexhaoge/zhuanglang-course-web/workflows/CodeQL/badge.svg)
 
 ## Run and Deploy
 ### Initialization
