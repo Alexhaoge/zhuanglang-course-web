@@ -24,9 +24,9 @@ We can deploy it in two ways.
 #### deploy seprately
 We can also put static files of front end into nginx and run backend with tomcat.  
 1. change the hostname in [prod.env.js](https://github.com/Alexhaoge/zhuanglang-course-web/blob/master/web/config/prod.env.js) and [zhuanglang_nginx.conf](https://github.com/Alexhaoge/zhuanglang-course-web/blob/master/zhuanglang_nginx.conf)
-2. run `npm run build` in `web` folder and get front end in `web/dist`
-3. copy `staic` and `index.html` to `/var/www/html/zhuanglang` on the server.
-3. run `gradle build` in `zhuanglang` and copy to the jar file some where on the server and run `java -jar zhuanglang.jar`  
+2. copy [zhuanglang_nginx.conf](https://github.com/Alexhaoge/zhuanglang-course-web/blob/master/zhuanglang_nginx.conf) to `/etc/nginx/conf.d/zhuanglang.conf` and restart nginx.
+3. run `npm run build` in `web` folder and get front end in `web/dist`. copy `staic` and `index.html` to `/var/www/html/zhuanglang` on the server.
+4. run `gradle build` in `zhuanglang` and copy to the jar file some where on the server and run `java -jar zhuanglang.jar`  
 #### wrap frontend and backend together in `war`
 1. Remove these code in `zhuanglang/build.gradle`:
     ```Gradle
