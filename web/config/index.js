@@ -13,9 +13,14 @@ module.exports = {
     proxyTable: {
       '/api': {
         target: 'http://localhost:8443',
+        changeOrigin: true
+      },
+      '/swagger': {
+        target: 'http://localhost:8443',
         changeOrigin: true,
+        secure: false,
         pathRewrite: {
-          '^/api': ''
+          '^/swagger': ''
         }
       }
     },

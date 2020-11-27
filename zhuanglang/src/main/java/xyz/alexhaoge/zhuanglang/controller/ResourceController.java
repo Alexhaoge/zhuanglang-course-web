@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import xyz.alexhaoge.zhuanglang.utils.Result;
 import xyz.alexhaoge.zhuanglang.pojo.Resource;
 import xyz.alexhaoge.zhuanglang.service.ResourceService;
 
+@Api(tags = {"课程资源接口"})
 @RestController
 public class ResourceController {
 

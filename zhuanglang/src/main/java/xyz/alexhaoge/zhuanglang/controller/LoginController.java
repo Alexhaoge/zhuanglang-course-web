@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 
+import io.swagger.annotations.Api;
 import xyz.alexhaoge.zhuanglang.utils.Result;
 import xyz.alexhaoge.zhuanglang.utils.ResultFactory;
 import xyz.alexhaoge.zhuanglang.pojo.Teacher;
 import xyz.alexhaoge.zhuanglang.service.TeacherService;
 
+@Api(tags = {"用户登录验证接口"})
 @RestController
 public class LoginController {
 

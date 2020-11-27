@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import xyz.alexhaoge.zhuanglang.pojo.Section;
 import xyz.alexhaoge.zhuanglang.service.SectionService;
 import xyz.alexhaoge.zhuanglang.utils.Result;
 
+@Api(tags = {"章节模块接口"})
 @RestController
 public class SectionController {
     @Autowired

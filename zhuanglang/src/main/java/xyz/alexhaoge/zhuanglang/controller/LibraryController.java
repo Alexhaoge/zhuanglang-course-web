@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import io.swagger.annotations.Api;
 import xyz.alexhaoge.zhuanglang.utils.MD5;
 import xyz.alexhaoge.zhuanglang.utils.Result;
 
+@Api(tags = {"图书上传接口"})
 @RestController
 public class LibraryController {
 

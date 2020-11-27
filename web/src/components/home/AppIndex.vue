@@ -7,7 +7,7 @@
       indicator-position="outside"
       :interval="4000">
       <el-carousel-item v-for="item in ListCarousel" :key="item.id">
-        <img :src="item.src" alt="site_banner" style="height:100%;width:100%;border-radius: 1rem;"/>
+        <img :src="item.src" alt="site_banner" style="height:100%;width:100%;"/>
       </el-carousel-item>
     </el-carousel>
     </el-col>

@@ -2,13 +2,18 @@
     <el-menu mode="horizontal">
       <el-menu-item style="pointer-events: none;">服务学习：庄浪教学资源平台</el-menu-item>
       <el-menu-item>
-        <a rel="noopener noreferrer" href="https://github.com/Alexhaoge/" target="_blank">
+        <a rel="noopener noreferrer" href="https://github.com/Alexhaoge/zhuanglang-course-web/" target="_blank">
           开发者：Alexhaoge
         </a>
       </el-menu-item>
       <el-menu-item>
         <a rel="noopener noreferrer" href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank">
           本网站遵循CC BY-NC-SA 3.0 CN协议
+        </a>
+      </el-menu-item>
+      <el-menu-item>
+        <a rel="noopener noreferrer" href="static/help.pdf" target="_blank">
+          使用帮助
         </a>
       </el-menu-item>
     </el-menu>

@@ -55,6 +55,14 @@ export default new Router({
         requireAuth: false
       }
     },
+    {
+      path: '/help',
+      beforeEnter () { location.href = 'static/help.pdf' }
+    },
+    {
+      path: '/apidoc',
+      beforeEnter () { location.href = '/swagger/swagger-ui.html' }
+    },
     // {
     //   path: '/library/:discipline/:bookID/:sectionID/:lessonID',
     //   name: 'library2',

@@ -15,6 +15,11 @@
           {{book.navItem}}
         </el-menu-item>
       </el-submenu>
+      <el-submenu v-else-if="item.navItem=='帮助'" :key="i" :index="item.name">
+        <template slot="title">{{item.navItem}}</template>
+        <el-menu-item index="/help">帮助手册</el-menu-item>
+        <el-menu-item index="/apidoc">API文档</el-menu-item>
+      </el-submenu>
       <el-menu-item v-else :key="i" :index="item.name" :disabled="item.isDisabled">
         {{item.navItem}}
       </el-menu-item>
@@ -34,7 +39,8 @@ export default {
         {name: '/', navItem: '首页'},
         {name: '/download', navItem: '下载', isDisabled: true},
         {name: '/library', navItem: '目录'},
-        {name: '/admin', navItem: '管理', isDisabled: true}
+        {name: '/admin', navItem: '管理', isDisabled: true},
+        {name: '/help', navItem: '帮助'}
       ],
       bookList: [
         {name: '/library/it', navItem: '信息技术'},

@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.Api;
 import xyz.alexhaoge.zhuanglang.pojo.Lesson;
 import xyz.alexhaoge.zhuanglang.service.LessonService;
 import xyz.alexhaoge.zhuanglang.utils.Result;
 
 @RestController
+@Api(tags = {"小节接口"})
 public class LessonController {
     @Autowired
     LessonService lService;
