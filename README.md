@@ -23,8 +23,9 @@ We can also run front end and backend seprately by running `npm run dev` in `web
 We can deploy it in two ways.
 #### deploy seprately
 We can also put static files of front end into nginx and run backend with tomcat.  
-1. run `npm run build` in `web` folder and get front end in `web/dist`
-2. copy `staic` and `index.html` to some where(say /var/www/html/zhuanglang) on the server and configure port 8080 by configuration files in `/etc/nginx/sites-enabled` or `conf.d`
+1. change the hostname in [prod.env.js](https://github.com/Alexhaoge/zhuanglang-course-web/blob/master/web/config/prod.env.js) and [zhuanglang_nginx.conf](https://github.com/Alexhaoge/zhuanglang-course-web/blob/master/zhuanglang_nginx.conf)
+2. run `npm run build` in `web` folder and get front end in `web/dist`
+3. copy `staic` and `index.html` to `/var/www/html/zhuanglang` on the server.
 3. run `gradle build` in `zhuanglang` and copy to the jar file some where on the server and run `java -jar zhuanglang.jar`  
 #### wrap frontend and backend together in `war`
 1. Remove these code in `zhuanglang/build.gradle`:
@@ -54,7 +55,8 @@ We can also put static files of front end into nginx and run backend with tomcat
 2. run `gradle build` and we can find the war file in `zhuanglang/build/libs`.
 3. copy the war file to some where on the server and run `java -jar zhuanglang.war`
     
-#### NOTE
-Deploy on seprate port may bring **cross-orgin** access problems, the solution is to change the configuration of `$axios` in `main.js` and `site-enabled` in **Nginx**. Please take a look at [the production branch](https://github.com/Alexhaoge/zhuanglang-course-web/tree/production) and its [release](https://github.com/Alexhaoge/zhuanglang-course-web/releases/tag/v0.0.1) for reference.
+##### NOTE
+This method is not tested in v0.1.0
+Deploy on together on port 8443 may bring **cross-orgin** access problems.
 ## Acknowledge
 The design of the whole website take reference from *Evan-Nightly's* [White-Jotter Project](https://github.com/Antabot/White-Jotter). Thanks a lot for his [tutorials](https://blog.csdn.net/Neuf_Soleil/article/details/88925013).
