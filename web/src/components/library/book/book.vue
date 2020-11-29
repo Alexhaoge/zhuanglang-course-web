@@ -2,7 +2,7 @@
   <el-main v-if="book !== 0">
     <el-row>
       <span class="content-title">{{disTable[subject]}} {{thisBook.name}}</span>
-      <newSection :belongID="thisBook.id" @onSubmit="loadsection()"></newSection>
+      <newSection v-if="isLogin" :belongID="thisBook.id" @onSubmit="loadsection()"></newSection>
     </el-row>
     <el-row>
     <el-collapse>
@@ -10,8 +10,8 @@
       :title="'模块'+item.number" :name="i" class="self">
         <p style="clear:right; text-align:left;">{{item.note}}</p>
         <div>
-        <delSection :sid="item.id" :sons="item.lessons.length" @onSubmit="loadsection()"></delSection>
-        <editSection :sid="item.id" @onSubmit="loadsection()"></editSection>
+        <delSection v-if="isLogin" :sid="item.id" :sons="item.lessons.length" @onSubmit="loadsection()"></delSection>
+        <editSection v-if="isLogin" :sid="item.id" @onSubmit="loadsection()"></editSection>
         </div>
       </el-collapse-item>
     </el-collapse>
@@ -38,6 +38,9 @@ export default {
     },
     subject () {
       return this.$store.state.subject
+    },
+    isLogin () {
+      return this.$store.state.username !== '' && this.$store.state.username != null
     }
   },
   methods: {

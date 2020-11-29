@@ -2,7 +2,8 @@
   <el-main v-if="lesson !== 0">
   <el-row>
   <span class="content-title">模块{{thisLesson.belong.number}} 第{{thisLesson.number}}节</span>
-  <newResource :belongID="thisLesson.id" @onSubmit="loadResources()"></newResource>
+  <newResource v-if="isLogin" :belongID="thisLesson.id" @onSubmit="loadResources()">
+  </newResource>
   </el-row>
   <el-row v-for="item in thisLesson.resources" :key="item.id">
     <el-card class="res-card">
@@ -10,8 +11,8 @@
         <span>{{item.name}}
           <!-- 上传者: {{item.upload.username}} -->
         </span>
-        <delResource :rid="item.id" @onSubmit="loadResources()"></delResource>
-        <editResource :rid="item.id" @onSubmit="loadResources()"></editResource>
+        <delResource v-if="isLogin" :rid="item.id" @onSubmit="loadResources()"></delResource>
+        <editResource v-if="isLogin" :rid="item.id" @onSubmit="loadResources()"></editResource>
         <a :href="'/api/resources/'+item.path" class="card-button">下载</a>
         <p style="clear:both;margin:unset;text-align:left;">{{item.note}}</p>
       </div>
@@ -40,6 +41,9 @@ export default {
   computed: {
     lesson () {
       return this.$store.state.lessonID
+    },
+    isLogin () {
+      return this.$store.state.username !== '' && this.$store.state.username != null
     }
   },
   methods: {

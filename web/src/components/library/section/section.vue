@@ -2,15 +2,15 @@
   <el-main>
     <el-row>
       <span class="content-title">{{thisSection.belong.name}} 模块{{thisSection.number}}</span>
-      <newLesson :belongID="thisSection.id" @onSubmit="loadLesson()"></newLesson>
+      <newLesson v-if="isLogin" :belongID="thisSection.id" @onSubmit="loadLesson()"></newLesson>
     </el-row>
     <el-row>
     <el-collapse>
       <el-collapse-item v-for="(item, i) in thisSection.lessons" :key="item.id"
       :title="'第'+item.number+'节'" :name="i">
         <p style="clear:right; text-align:left;">{{item.note}}</p>
-        <delLesson :lid="item.id" :sons="item.resources.length" @onSubmit="loadLesson()"></delLesson>
-        <editLesson :lid="item.id" @onSubmit="loadLesson()"></editLesson>
+        <delLesson v-if="isLogin" :lid="item.id" :sons="item.resources.length" @onSubmit="loadLesson()"></delLesson>
+        <editLesson v-if="isLogin" :lid="item.id" @onSubmit="loadLesson()"></editLesson>
       </el-collapse-item>
     </el-collapse>
     </el-row>
@@ -32,6 +32,9 @@ export default {
   computed: {
     section () {
       return this.$store.state.sectionID
+    },
+    isLogin () {
+      return this.$store.state.username !== '' && this.$store.state.username != null
     }
   },
   methods: {

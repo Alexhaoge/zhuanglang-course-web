@@ -21,7 +21,7 @@
         </el-submenu>
       </el-submenu>
     </el-menu>
-    <addBook @onSubmit="loadBooks()"></addBook>
+    <addBook v-if="isLogin" @onSubmit="loadBooks()"></addBook>
   </el-aside>
 </template>
 
@@ -74,6 +74,9 @@ export default {
     },
     discipline () {
       return this.$store.state.subject
+    },
+    isLogin () {
+      return this.$store.state.username !== '' && this.$store.state.username != null
     }
   },
   mounted () {

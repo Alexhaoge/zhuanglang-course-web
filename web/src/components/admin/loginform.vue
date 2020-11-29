@@ -22,7 +22,7 @@
         <el-button type="primary" style="width: 20%;background: rgb(113,10,83);border: none"
           v-on:click="login">登录</el-button>
         <el-button type="primary" style="width: 20%;background: rgb(113,10,83);border: none"
-          v-on:click="$router.push('/register')">注册</el-button>
+          v-on:click="$router.push('/register')" disabled>注册</el-button>
       </el-form-item>
     </el-form>
   </el-card>
