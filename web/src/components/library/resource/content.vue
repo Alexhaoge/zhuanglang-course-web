@@ -57,7 +57,7 @@ export default {
     },
     getIframe (bilibili, path) {
       if (bilibili === '' || bilibili == null) {
-        return 'http://localhost:8080/api/resources/' + path
+        return process.env.BASE_URI + '/resources/' + path
       } else {
         return 'https://player.bilibili.com/player.html?page=1&bvid=' + bilibili
       }
