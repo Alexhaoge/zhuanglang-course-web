@@ -124,7 +124,7 @@ export default {
       })
     },
     getUrl () {
-      var url = 'http://localhost:8443/api/upload/' + this.$store.state.subject + '/' + this.$store.state.bookID + '/' + this.$store.state.sectionID + '/' + this.$store.state.lessonID
+      var url = process.env.BASE_URI + '/upload/' + this.$store.state.subject + '/' + this.$store.state.bookID + '/' + this.$store.state.sectionID + '/' + this.$store.state.lessonID
       return url
     },
     clickshow () {
