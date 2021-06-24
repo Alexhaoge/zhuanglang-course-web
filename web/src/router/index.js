@@ -57,7 +57,7 @@ export default new Router({
     },
     {
       path: '/help',
-      beforeEnter () { location.href = 'static/help.pdf' }
+      beforeEnter () { location.href = '/static/help.pdf' }
     },
     {
       path: '/apidoc',

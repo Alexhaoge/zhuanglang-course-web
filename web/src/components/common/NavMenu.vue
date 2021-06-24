@@ -11,7 +11,7 @@
     <template v-for="(item,i) in navList">
       <el-submenu v-if="item.navItem=='目录'" :key="i" :index="item.name">
         <template slot="title">{{item.navItem}}</template>
-        <el-menu-item v-for="(book,i) in bookList" :key="i" :index="book.name">
+        <el-menu-item v-for="(book,i) in bookList" :key="i" :index="book.name" :disabled="book.isDisabled">
           {{book.navItem}}
         </el-menu-item>
       </el-submenu>
@@ -44,9 +44,9 @@ export default {
       ],
       bookList: [
         {name: '/library/it', navItem: '信息技术'},
-        {name: '/library/music', navItem: '音乐'},
-        {name: '/library/art', navItem: '美术'},
-        {name: '/library/pe', navItem: '体育'}
+        {name: '/library/music', navItem: '音乐', isDisabled: true},
+        {name: '/library/art', navItem: '美术', isDisabled: true},
+        {name: '/library/pe', navItem: '体育', isDisabled: true}
       ]
     }
   },

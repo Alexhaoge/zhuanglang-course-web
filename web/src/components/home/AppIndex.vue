@@ -24,11 +24,11 @@
       <br/><br/>
       <div class="bottom">
         <el-button v-if="item.Name == '信息技术'"
-          type="info" class="button" @click="jump(item.url)">
+          type="primary" class="button" @click="jump(item.url)">
           查看</el-button>
         <el-button v-else
-          type="info" class="button" @click="jump(item.url)">
-          查看</el-button>
+          disabled type="info" class="button" @click="jump(item.url)">
+          开发中</el-button>
       </div>
     </el-card>
   </el-col>
